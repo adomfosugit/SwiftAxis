@@ -32,12 +32,12 @@ export function Hero() {
             Disbursement infrastructure for organizations
           </span>
           <h1 className="mb-6 font-serif text-[38px] font-semibold leading-[1.06] tracking-tight md:text-[52px]">
-            Pay everyone on your list — <em className="font-medium not-italic text-green-deep italic">without becoming a bank.</em>
+            Pay everyone on your list — <em className="font-medium italic text-green-deep italic">without becoming a bank.</em>
           </h1>
           <p className="mb-[34px] max-w-[480px] text-[17px] leading-[1.65] text-graphite">
             Swift Axis handles training allowances, per-diems, and third-party vendor payments on your behalf. Upload a spreadsheet, we move the money, you watch every line settle.
           </p>
-          <div className="flex flex-wrap items-center gap-5">
+          <div className="flex flex-start items-center gap-5">
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
@@ -45,10 +45,10 @@ export function Hero() {
               className="inline-flex items-center gap-2 rounded-[3px] bg-ink px-[26px] py-3.5 text-[15px] font-medium text-paper transition-colors hover:bg-green-deep"
             >
            
-              <Button className="bg-cardprimary text-white hover:bg-cardprimary/80 p-5">Request a demo</Button>
+              <Button className="bg-cardprimary text-white hover:bg-cardprimary/80 p-5 w-[200px]">Request a demo</Button>
 
             </motion.a>
-           <Button className="ring-1 ring-cardprimary  hover:bg-cardprimary/80 p-5" variant="outline">See how it works</Button>
+          
           </div>
         </motion.div>
 
@@ -60,8 +60,8 @@ export function Hero() {
         >
             {/* card fix */}
           <div className="bg-cardprimary flex items-center justify-between px-[22px] py-[18px]">
-            <span className="font-mono text-xs tracking-wide text-zinc-300">disbursement_batch.xlsx</span>
-            <span className="font-mono text-[11.5px] text-zinc-300">BATCH-3392</span>
+            <span className="font-mono text-xs tracking-wide text-zinc-300">USER PORTAL</span>
+            <span className="font-mono text-[11.5px] text-zinc-300">UPLOADS-332</span>
           </div>
           <div className="py-1.5">
             {rows.map((r, i) => (

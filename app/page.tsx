@@ -1,4 +1,5 @@
 import { About } from "@/components/Landing/About";
+import { Footer } from "@/components/Landing/Footer";
 import { Hero } from "@/components/Landing/Hero";
 import { HowItWorks } from "@/components/Landing/howitWorks";
 import { ProductShowcase } from "@/components/Landing/Productshowcases";
@@ -17,6 +18,7 @@ export default function Home() {
       <HowItWorks />
       <ProductShowcase />
       <UseCases />
+      <Footer/>
     </main>
   );
 }
