@@ -28,6 +28,11 @@ model Job {
   // Clerk authenticated user ID
   clerkUserId String
 
+  // Clerk authenticated Email
+
+  userEmail String
+
+
   status JobStatus @default(STARTED)
 
   // Uploadcare / Cloudinary references

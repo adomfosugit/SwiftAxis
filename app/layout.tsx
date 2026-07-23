@@ -28,7 +28,13 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <ClerkProvider>
+      <ClerkProvider  appearance={{
+    options: {
+      socialButtonsPlacement: 'bottom',
+      termsPageUrl: 'https://clerk.com/terms',
+      unsafe_disableDevelopmentModeWarnings: true,
+    },
+  }}>
 
       <body className="min-h-full flex flex-col">{children}</body>
       </ClerkProvider>

@@ -60,7 +60,7 @@ export function Hero() {
         >
             {/* card fix */}
           <div className="bg-cardprimary flex items-center justify-between px-[22px] py-[18px]">
-            <span className="font-mono text-xs tracking-wide text-zinc-300">USER PORTAL</span>
+            <span className="font-mono text-xs tracking-wide text-zinc-300">USER PORTAL </span>
             <span className="font-mono text-[11.5px] text-zinc-300">UPLOADS-332</span>
           </div>
           <div className="py-1.5">

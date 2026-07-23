@@ -1,3 +1,4 @@
+
 import React from "react";
 import Logo from "./Logo";
 import { NavigationLinks } from "@/constants";
@@ -7,10 +8,13 @@ import {  Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
 import { GlassButton } from "../ui/glassybutton";
 import NavigationDropdown from "./NavigationDropdown";
 import { Button } from "../ui/button";
+import { redirect } from "next/navigation";
+
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+
   return (
     <nav className="sticky top-0 z-50 border-b border-hairline-soft bg-background backdrop-blur-md">
       <div className="mx-auto flex w-full items-center justify-between px-8 py-4.5">
@@ -30,20 +34,21 @@ const Navbar = (props: Props) => {
 
         <div className="hidden items-center gap-4 md:flex">
           <Show when= 'signed-out'>
-          <SignInButton >
+          <SignInButton   mode="modal"   >
 
             <Button   className="ring-1 bg-cardprimary shadow-xl w-full text-white backdrop-blur-xl rounded-xs p-4" > Sign In </Button>
           </SignInButton>
           </Show>
           
           <Show when= 'signed-in'>
-            <Link
-              href="/dashboard"
-              className="text-[14px] font-medium text-ink-soft hover:text-green-deep"
-            >
-              Dashboard
-            </Link>
+        
+
             <UserButton />
+          </Show>
+          <Show when= 'signed-in'>
+            <Link href="/dashboard" >
+           <Button className=' text-cardprimary p-4 w-[100px] ring-1 ring-cardprimary' variant="outline" >Dashboord</Button>  
+           </Link>      
           </Show>
 
 

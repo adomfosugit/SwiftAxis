@@ -6,8 +6,8 @@ async function main() {
   // MOCK CLERK USER
   // ============================
 
-  const clerkUserId = `user_${Date.now()}`
-
+  const clerkUserId = `user_3GiO1IfB4VFErb2rksHSWT6BCQf`
+  const userEmail = 'adomfosu2000@gmail.com'
   console.log("Clerk User ID:", clerkUserId)
 
 
@@ -18,6 +18,8 @@ async function main() {
   const job1 = await prisma.job.create({
     data: {
       clerkUserId,
+      userEmail,
+
 
       status: 'STARTED',
 
@@ -32,6 +34,7 @@ async function main() {
   const job2 = await prisma.job.create({
     data: {
       clerkUserId,
+      userEmail,
 
       status: 'PROCESSING',
 
@@ -144,16 +147,16 @@ async function main() {
   // CLEANUP TEST DATA
   // ============================
 
-  await prisma.job.deleteMany({
-    where: {
-      clerkUserId,
-    },
-  })
+  // await prisma.job.deleteMany({
+  //   where: {
+  //     clerkUserId,
+  //   },
+  // })
 
 
-  console.log(
-    'Deleted test jobs'
-  )
+  // console.log(
+  //   'Deleted test jobs'
+  // )
 }
 
 

@@ -40,11 +40,22 @@ const NavigationDropdown = (props: Props) => {
               </DropdownMenuItem>
             ))}
           </DropdownMenuGroup>
+         
           <Show when="signed-in">
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
+              <Link className="text-center" href="/dashboard">
+                <DropdownMenuItem className="text-center">
+                  Dashboard
+                </DropdownMenuItem>
+              </Link>
+            </DropdownMenuGroup>
+          </Show> 
+           <Show when="signed-in">
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
               <DropdownMenuItem className="text-center">
-                <UserButton />
+                <UserButton showName  />
               </DropdownMenuItem>
             </DropdownMenuGroup>
           </Show>
