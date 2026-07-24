@@ -3,8 +3,14 @@
 
 import { currentUser } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
-import { JobStatus } from '@/lib/generated/prisma/enums'
 
+
+
+export const JobStatus = {
+  STARTED: 'STARTED',
+  PROCESSING: 'PROCESSING',
+  COMPLETE: 'COMPLETE'
+}
 export async function createJob(jobUploadRef: string) {
   const user = await currentUser()
 
@@ -19,6 +25,7 @@ export async function createJob(jobUploadRef: string) {
     data: {
       clerkUserId,
       userEmail,
+      //@ts-ignore
       status: JobStatus.STARTED,
       jobUploadRef,
     },
