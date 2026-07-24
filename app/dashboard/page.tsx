@@ -71,7 +71,7 @@ const Page = async ({ searchParams }: Props) => {
     <div className="flex min-h-screen flex-col gap-y-4 bg-zinc-50/80">
       <DashboardNav />
       <div className="flex max-w-6xl justify-end">
-        <UploadModal clerkUserId= {user.id} userEmail= {user.emailAddresses[0].emailAddress}/>
+        <UploadModal  />
       </div>
 
       <div className="mx-auto m-5 flex max-w-6xl flex-col items-center justify-center bg-white shadow-xl">

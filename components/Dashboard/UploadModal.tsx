@@ -19,12 +19,7 @@ import { Field, FieldDescription, FieldLabel } from "../ui/field"
 import { Button } from "../ui/button"
 import { createJob } from "@/lib/actions"
 
-type props = {
-    clerkUserId:string;
-    userEmail:string
-}
-
-const UploadModal = ({clerkUserId, userEmail}:props) => {
+const UploadModal = () => {
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const [cdnUrl, setCdnUrl] = useState<string | null>(null)
@@ -35,16 +30,6 @@ const UploadModal = ({clerkUserId, userEmail}:props) => {
     setCdnUrl(null)
     setIsSaving(false)
     setError(null)
-  }
-
-  const handleUploadSuccess = (e: {
-    detail: { successEntries: { cdnUrl: string | null }[] }
-  }) => {
-    const url = e.detail.successEntries[0]?.cdnUrl ?? null
-    if (url) {
-      setCdnUrl(url)
-      setError(null)
-    }
   }
 
   const handleCreateJob = async () => {
@@ -92,13 +77,17 @@ const UploadModal = ({clerkUserId, userEmail}:props) => {
           <FieldLabel htmlFor="uploadfile">Excel/CSV</FieldLabel>
 
           <FileUploaderRegular
-            dynamicButtonViewMode="auto"
             sourceList="local"
             cdnCname="https://3ry6qx9e9t.ucarecd.net/"
             classNameUploader="uc-light"
             pubkey="834647401c06d67a05d0"
-            //@ts-ignore
-            onCommonUploadSuccess={handleUploadSuccess}
+            onCommonUploadSuccess={(e) => {
+              const url = e.successEntries[0]?.cdnUrl ?? null
+              if (e.isSuccess) {
+                setCdnUrl(url)
+                setError(null)
+              }
+            }}
           />
 
           <FieldDescription>

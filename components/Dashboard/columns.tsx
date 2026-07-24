@@ -5,6 +5,7 @@ import { JobStatus } from "@/lib/generated/prisma/enums";
 import { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
+import Link from "next/link";
 
 const statusStyles: Record<JobStatus, string> = {
   [JobStatus.STARTED]: "bg-slate-500 text-white hover:bg-slate-600 capitalize",
@@ -46,9 +47,9 @@ export const columns: ColumnDef<Job>[] = [
     cell: ({ row }) => {
       const ref = row.getValue<string>("jobUploadRef");
       return (
-        <span className=" text-blue-600 cursor-pointer" title={ref}>
-          {ref}
-        </span>
+        <Link href={ref} className=" text-blue-600 cursor-pointer" title={ref}>
+          View Uploaded File
+        </Link>
       );
     },
   },
