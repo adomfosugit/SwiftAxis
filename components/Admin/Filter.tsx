@@ -104,9 +104,28 @@ const Filter = () => {
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-4 rounded-lg border p-1 justify-center w-5xl mx-auto">
+    <div className="flex flex-wrap items-center gap-4 rounded-lg border p-1 justify-center w-6xl mx-auto">
 
-     
+      {/* User Email */}
+      <div className="flex flex-row space-x-2 items-center">
+        <label className="font-medium">
+          Email
+        </label>
+
+        <Input
+          type="text"
+          placeholder="user@example.com"
+          value={emailInput}
+          onChange={(e) => setEmailInput(e.target.value)}
+          onBlur={commitEmailFilter}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              commitEmailFilter()
+            }
+          }}
+          className="w-[220px]"
+        />
+      </div>
 
       {/* Status */}
       <div className="flex flex-row space-x-2 items-center">

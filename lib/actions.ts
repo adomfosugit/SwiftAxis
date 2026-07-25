@@ -3,14 +3,10 @@
 
 import { currentUser } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
+import { revalidatePath } from 'next/cache'
+import { JobStatus } from '@/lib/generated/prisma/enums'
+import { isAdminUser } from './isAdmin'
 
-
-
-export const JobStatus = {
-  STARTED: 'STARTED',
-  PROCESSING: 'PROCESSING',
-  COMPLETE: 'COMPLETE'
-}
 export async function createJob(jobUploadRef: string) {
   const user = await currentUser()
 
@@ -25,7 +21,6 @@ export async function createJob(jobUploadRef: string) {
     data: {
       clerkUserId,
       userEmail,
-      //@ts-ignore
       status: JobStatus.STARTED,
       jobUploadRef,
     },
@@ -33,3 +28,33 @@ export async function createJob(jobUploadRef: string) {
 
   return job
 }
+
+export async function updateJobStatus(jobId: string, status: JobStatus) {
+  const user = await currentUser()
+
+  if (!user) {
+    throw new Error("Unauthorized")
+  }
+
+  const isAdmin = await isAdminUser()
+  if (!isAdmin) {
+    throw new Error("Forbidden")
+  }
+
+  await prisma.job.update({
+    where: { id: jobId },
+    data: {
+      status,
+      completedAt: status === "COMPLETE" ? new Date() : null,
+    },
+  })
+
+  revalidatePath("/admin")
+}
+
+
+
+
+// check if user isAdmin 
+
+

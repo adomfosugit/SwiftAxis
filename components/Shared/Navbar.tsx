@@ -47,7 +47,7 @@ const Navbar = (props: Props) => {
           </Show>
           <Show when= 'signed-in'>
             <Link href="/dashboard" >
-           <Button className=' text-cardprimary p-4 w-[100px] ring-1 ring-cardprimary' variant="outline" >Dashboord</Button>  
+           <Button className=' text-cardprimary p-4 w-[100px] ring-1 ring-cardprimary cursor-pointer' variant="outline" >Dashboord</Button>  
            </Link>      
           </Show>
 

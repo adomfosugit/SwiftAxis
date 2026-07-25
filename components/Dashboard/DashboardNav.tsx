@@ -10,7 +10,7 @@ import Logo from "../Shared/Logo";
 
 type Props = {};
 
-const Navbar = (props: Props) => {
+const DashboardNav = (props: Props) => {
   return (
     <nav className="sticky top-0 z-50 border-b border-hairline-soft bg-background backdrop-blur-md">
       <div className="mx-auto flex w-full items-center justify-between px-8 py-4.5">
@@ -24,4 +24,4 @@ const Navbar = (props: Props) => {
   );
 };
 
-export default Navbar;
+export default DashboardNav;
