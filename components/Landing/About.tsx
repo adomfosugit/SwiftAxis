@@ -83,36 +83,38 @@ export function About() {
           </p>
         </motion.div>
 
-        <div
-  className="flex flex-col gap-6 bg-[url('/SwiftAxis.png')] bg-cover bg-center rounded-2xl p-6"
->
-  <div className="h-[450px] w-[700px]">
-    <ScrollStack
-      itemDistance={15}
-      itemStackDistance={10}
-      baseScale={0.6}
-      className="no-scrollbar"
-      onStackComplete={() => {}}
-    >
-      {rows.map((r) => (
-        <ScrollStackItem
-          key={r.num}
-          itemClassName={`${r.bg} text-paper rounded-md shadow-[0_24px_60px_-20px_rgba(11,31,51,0.35)]`}
-        >
-          <div className="flex flex-col gap-4 p-2 md:p-2">
-            <span className="font-mono text-xs text-white">{r.num}</span>
-            <h3 className="font-serif text-2xl md:text-3xl font-semibold text-white">
-              {r.title}
-            </h3>
-            <p className={`text-xl leading-[1.7] ${r.text} max-w-xl`}>
-              {r.body}
-            </p>
+        <div className="flex flex-col gap-2 bg-[url('/SwiftAxis.png')] bg-cover bg-center rounded-2xl p-2 min-w-0">
+            <div className="h-[450px] w-full min-w-0">
+            <ScrollStack
+              itemDistance={15}
+              itemStackDistance={10}
+              baseScale={0.6}
+              className="no-scrollbar p--[10px]"
+              onStackComplete={() => {}}
+              
+              
+            >
+              {rows.map((r) => (
+                <ScrollStackItem
+                  key={r.num}
+                  itemClassName={`${r.bg} text-paper rounded-md shadow-[0_24px_60px_-20px_rgba(11,31,51,0.35)]`}
+                >
+                  <div className="flex flex-col gap-1 md:gap-3 p-1 md:p-2">
+                    <span className="font-mono text-xs text-white">
+                      {r.num}
+                    </span>
+                    <h3 className="font-serif text-xl md:text-3xl font-semibold text-white">
+                      {r.title}
+                    </h3>
+                    <p className={`text-xl leading-[1.3] md:leading-1.7 ${r.text} max-w-xl`}>
+                      {r.body}
+                    </p>
+                  </div>
+                </ScrollStackItem>
+              ))}
+            </ScrollStack>
           </div>
-        </ScrollStackItem>
-      ))}
-    </ScrollStack>
-  </div>
-</div>
+        </div>
       </div>
     </section>
   );

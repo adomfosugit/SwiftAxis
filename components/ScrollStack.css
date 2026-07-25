@@ -12,11 +12,12 @@
   will-change: scroll-position;
 }
 
-.scroll-stack-inner {
-  padding: 20vh 5rem 50rem;
-  min-height: 100vh;
-}
 
+.scroll-stack-inner {
+  padding: 20vh clamp(0.5rem, 4vw, 5rem) 50rem;
+  min-height: 100vh;
+  min-width: 0;
+}
 .scroll-stack-card-wrapper {
   position: relative;
 }
