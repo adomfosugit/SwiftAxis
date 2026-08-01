@@ -9,12 +9,14 @@ import { GlassButton } from "../ui/glassybutton";
 import NavigationDropdown from "./NavigationDropdown";
 import { Button } from "../ui/button";
 import { redirect } from "next/navigation";
+import { currentUser } from "@clerk/nextjs/server";
 
 
 type Props = {};
 
-const Navbar = (props: Props) => {
-
+const Navbar = async(props: Props) => {
+  const user = await currentUser()
+  const isAdmin = user?.emailAddresses[0].emailAddress === 'adomfosu2000@gmail.com' 
   return (
     <nav className="sticky top-0 z-50 border-b border-hairline-soft bg-background backdrop-blur-md">
       <div className="mx-auto flex w-full items-center justify-between px-8 py-4.5">
@@ -48,7 +50,15 @@ const Navbar = (props: Props) => {
           <Show when= 'signed-in'>
             <Link href="/dashboard" >
            <Button className=' text-cardprimary p-4 w-[100px] ring-1 ring-cardprimary cursor-pointer' variant="outline" >Dashboord</Button>  
-           </Link>      
+           </Link>    
+           {isAdmin && 
+           
+           (
+           
+            <Link href="/admin" >
+           <Button className=' text-cardprimary p-4 w-[100px] ring-1 ring-cardprimary cursor-pointer' variant="outline"> Admin </Button>  
+           </Link>    )  
+           }  
           </Show>
 
 

@@ -1,10 +1,9 @@
 
 import { columns } from "@/components/Admin/columns";
 import { DataTable } from "@/components/Admin/data-table";
+import Filter from "@/components/Admin/Filter";
 import DashboardNav from "@/components/Dashboard/DashboardNav";
 import DashboardPagination from "@/components/Dashboard/DashboardPagination";
-
-import Filter from "@/components/Dashboard/Filter";
 import { getJobsCursor } from "@/lib/db";
 import { JobStatus } from "@/lib/generated/prisma/enums";
 import { isAdminUser } from "@/lib/isAdmin";

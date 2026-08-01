@@ -10,9 +10,11 @@
 */
 
 export const JobStatus = {
-  STARTED: 'STARTED',
+  FILE_SENT: 'FILE_SENT',
   PROCESSING: 'PROCESSING',
-  COMPLETE: 'COMPLETE'
+  COMPLETE: 'COMPLETE',
+  FLAGGED: 'FLAGGED',
+  FILE_REUPLOADED: 'FILE_REUPLOADED'
 } as const
 
 export type JobStatus = (typeof JobStatus)[keyof typeof JobStatus]

@@ -22,3 +22,13 @@ export * from './enums';
  * 
  */
 export type Job = Prisma.JobModel
+/**
+ * Model Comment
+ * 
+ */
+export type Comment = Prisma.CommentModel
+/**
+ * Model CommentImage
+ * 
+ */
+export type CommentImage = Prisma.CommentImageModel

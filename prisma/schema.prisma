@@ -13,12 +13,12 @@ datasource db {
 }
 
 
-
-
 enum JobStatus {
-  STARTED
+  FILE_SENT
   PROCESSING
   COMPLETE
+  FLAGGED
+  FILE_REUPLOADED
 }
 
 
@@ -27,24 +27,56 @@ model Job {
 
   // Clerk authenticated user ID
   clerkUserId String
-
   // Clerk authenticated Email
+  userEmail   String
 
-  userEmail String
-
-
-  status JobStatus @default(STARTED)
+  status JobStatus @default(FILE_SENT)
 
   // Uploadcare / Cloudinary references
   jobUploadRef String
-  invoiceUploadRef String?
 
   completedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
+  // Audit trail: every comment/flag left on this job
+  comments Comment[]
 
   @@index([clerkUserId, status])
   @@index([clerkUserId, createdAt])
+}
+
+model Comment {
+  id String @id @default(cuid())
+
+  job   Job    @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  jobId String
+
+  // Clerk ID + email of the admin leaving the comment (denormalized so the
+  // audit trail survives even if the admin account is later modified/removed)
+  adminUserId String
+  adminEmail  String
+
+  comment String
+
+  images CommentImage[]
+
+  createdAt DateTime @default(now())
+
+  @@index([jobId, createdAt])
+  @@index([adminUserId])
+}
+
+model CommentImage {
+  id String @id @default(cuid())
+
+  comment   Comment @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  commentId String
+
+  // Full Uploadcare CDN URL, preloaded by admin before comment submission
+  imageUrl String
+
+  createdAt DateTime @default(now())
+
+  @@index([commentId])
 }

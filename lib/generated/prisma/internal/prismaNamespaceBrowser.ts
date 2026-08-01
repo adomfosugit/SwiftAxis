@@ -51,7 +51,9 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Job: 'Job'
+  Job: 'Job',
+  Comment: 'Comment',
+  CommentImage: 'CommentImage'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -76,13 +78,34 @@ export const JobScalarFieldEnum = {
   userEmail: 'userEmail',
   status: 'status',
   jobUploadRef: 'jobUploadRef',
-  invoiceUploadRef: 'invoiceUploadRef',
   completedAt: 'completedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum]
+
+
+export const CommentScalarFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  adminUserId: 'adminUserId',
+  adminEmail: 'adminEmail',
+  comment: 'comment',
+  createdAt: 'createdAt'
+} as const
+
+export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
+
+
+export const CommentImageScalarFieldEnum = {
+  id: 'id',
+  commentId: 'commentId',
+  imageUrl: 'imageUrl',
+  createdAt: 'createdAt'
+} as const
+
+export type CommentImageScalarFieldEnum = (typeof CommentImageScalarFieldEnum)[keyof typeof CommentImageScalarFieldEnum]
 
 
 export const SortOrder = {

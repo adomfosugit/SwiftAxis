@@ -9,4 +9,6 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/Job'
+export type * from './models/Comment'
+export type * from './models/CommentImage'
 export type * from './commonInputTypes'
