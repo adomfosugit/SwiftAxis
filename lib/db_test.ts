@@ -21,7 +21,7 @@ async function main() {
       userEmail,
 
 
-      status: 'STARTED',
+      status: 'FILE_SENT',
 
       jobUploadRef:
         'cloudinary/job-upload-123',
@@ -76,10 +76,6 @@ async function main() {
 
       data: {
         status: 'COMPLETE',
-
-        invoiceUploadRef:
-          'cloudinary/invoice-789',
-
         completedAt:
           new Date(),
       },

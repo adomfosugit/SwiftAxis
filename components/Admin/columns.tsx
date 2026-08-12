@@ -12,14 +12,16 @@ import StatusCell from "./Status";
 import CommentModal from "./CommentModal";
 
 const statusStyles: Record<JobStatus, string> = {
-  [JobStatus.FILE_SENT]: "bg-slate-500 text-white hover:bg-slate-600 capitalize",
-  [JobStatus.PROCESSING]: "bg-amber-600 text-white hover:bg-amber-700 capitalize",
-  [JobStatus.COMPLETE]: "bg-green-700 text-white  hover:bg-green-800 capitalize",
-  // NOTE: keep this badge itself static — the ping halo is applied separately
-  // as a wrapper layer (see the `status` column below), not inline here.
-  // Applying `animate-ping` directly to the badge's own background makes the
-  // whole pill fade to invisible at the peak of each cycle.
+  [JobStatus.FILE_SENT]:
+    "bg-slate-500 text-white hover:bg-slate-600 capitalize",
+  [JobStatus.PROCESSING]:
+    "bg-amber-600 text-white hover:bg-amber-700 capitalize",
+  [JobStatus.COMPLETE]:
+    "bg-green-700 text-white  hover:bg-green-800 capitalize",
+
   [JobStatus.FLAGGED]: "bg-red-700 text-white hover:bg-red-800 capitalize",
+  [JobStatus.FILE_REUPLOADED]:
+    " bg-blue-600 text-white capitalize animate-pulse p-3",
 };
 
 export const columns: ColumnDef<Job>[] = [
@@ -28,9 +30,15 @@ export const columns: ColumnDef<Job>[] = [
     header: "Job ID",
     cell: ({ row }) => {
       const id = row.getValue<string>("id");
-      return <Link href={`/admin/${id}`} className=" text-blue-600 cursor-pointer" title={id}>
-        {id}
-      </Link>;
+      return (
+        <Link
+          href={`/admin/${id}`}
+          className=" text-blue-600 cursor-pointer"
+          title={id}
+        >
+          {id}
+        </Link>
+      );
     },
   },
   {
@@ -47,13 +55,7 @@ export const columns: ColumnDef<Job>[] = [
     header: "Status",
     cell: ({ row }) => {
       const status = row.original.status;
-      return (
-     
-      
-            <StatusCell jobId={row.original.id} status={status} />
-          
-    
-      );
+      return <StatusCell jobId={row.original.id} status={status} />;
     },
   },
 
@@ -104,10 +106,7 @@ export const columns: ColumnDef<Job>[] = [
     cell: ({ row }) => {
       const isFlagged = row.original.status === JobStatus.FLAGGED;
 
-      return (
-        <CommentModal jobId={row.original.id} />
-      );
+      return <CommentModal jobId={row.original.id} />;
     },
   },
-  
 ];
