@@ -1,8 +1,8 @@
-import {  Mail, Phone, MapPin } from "lucide-react";
-
-
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="border-t border-hairline-soft py-14 bg-cardprimary text-white">
       <div className="mx-auto max-w-[1180px] px-8">
@@ -58,23 +58,23 @@ export function Footer() {
             <div className="flex flex-col gap-3 text-[13.5px] text-graphite">
               <a href="mailto:hello@swiftaxis.com" className="flex items-center gap-2 hover:text-green-deep">
                 <Mail size={14} strokeWidth={1.8} className="shrink-0 text-green-deep" />
-                hello@swiftaxis.com
+                info@swiftaxisintegratedservices.com
               </a>
               <a href="tel:+2341234567890" className="flex items-center gap-2 hover:text-green-deep">
                 <Phone size={14} strokeWidth={1.8} className="shrink-0 text-green-deep" />
-                +234 123 456 7890
+                07035736708
               </a>
               <div className="flex items-start gap-2">
                 <MapPin size={14} strokeWidth={1.8} className="mt-0.5 shrink-0 text-green-deep" />
-                <span>Lagos, Nigeria</span>
+                <span>Abuja, Nigeria</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-2 border-t border-hairline-soft pt-6 text-[12.5px] text-graphite">
-          <span>© 2026 Swift Axis Integrated Services Limited.</span>
-          <span>Lagos, Nigeria</span>
+          <span>&copy; {currentYear} Swift Axis Integrated Services Limited.</span>
+          <span>Abuja, Nigeria</span>
         </div>
       </div>
     </footer>
