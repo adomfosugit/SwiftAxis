@@ -16,7 +16,7 @@ type Props = {};
 
 const Navbar = async(props: Props) => {
   const user = await currentUser()
-  const isAdmin = user?.emailAddresses[0].emailAddress === 'adomfosu2000@gmail.com' 
+  const isAdmin = user?.emailAddresses[0].emailAddress === 'info@swiftaxisintegratedservices.com' 
   return (
     <nav className="sticky top-0 z-50 border-b border-hairline-soft bg-background backdrop-blur-md">
       <div className="mx-auto flex w-full items-center justify-between px-8 py-4.5">
