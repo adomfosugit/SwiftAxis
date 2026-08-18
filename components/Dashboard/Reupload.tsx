@@ -18,7 +18,7 @@ import {
 import { Field, FieldDescription, FieldLabel } from "../ui/field"
 import { Button } from "../ui/button"
 import { reuploadJobFile } from "@/lib/actions"
-import { JobStatus } from "@/lib/generated/prisma/enums"
+
 type props = {
   id: string
   isFlagged: boolean

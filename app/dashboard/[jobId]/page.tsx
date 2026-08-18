@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/db'
-import JobDetailClient from '@/components/Admin/JobDetailClient'
+import JobDetailClient from '@/components/Dashboard/JobDetailClient'
 
 type Props = {
   params: Promise<{ jobId: string }>

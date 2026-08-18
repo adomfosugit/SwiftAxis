@@ -70,10 +70,20 @@ const Page = async ({ searchParams }: Props) => {
   return (
     <div className="flex min-h-screen flex-col gap-y-4 bg-zinc-50/80">
       <DashboardNav />
-      <div className="flex max-w-6xl justify-end">
-        <UploadModal  />
-      </div>
+     <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-8 rounded-xl border border-slate-200 bg-slate-50 px-6 py-4 shadow-sm">
+  <p className="max-w-4xl text-sm leading-6 text-slate-600">
+    To help us process payments to your beneficiaries as efficiently as
+    possible, we encourage you to carefully review and verify all beneficiary
+    details and payment data, including those of training participants and
+    vendors, before submission. Accurate and complete information will help
+    minimize processing delays and enable us to meet our standard payment
+    turnaround time.
+  </p>
 
+  <div className="shrink-0">
+    <UploadModal />
+  </div>
+</div>
       <div className="mx-auto m-5 flex max-w-6xl flex-col items-center justify-center bg-white shadow-xl">
         <Filter />
 
