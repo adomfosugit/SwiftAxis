@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Field } from "../ui/field";
 import Link from "next/link";
 import ReuploadModal from "./Reupload";
+import CommentModal from "../Admin/CommentModal";
 
 type JobWithComments = Job & {
   comments: (Comment & { images: CommentImage[] })[];
@@ -105,6 +106,11 @@ export default function JobDetailClient({ job }: Props) {
               )}
             </div>
           ))}
+        </div>
+        
+        <div className="flex flex-col gap-2 border-t pt-3">
+         
+         <CommentModal jobId={job.id} />
         </div>
 
         <div className="flex flex-col gap-2 border-t pt-3">
