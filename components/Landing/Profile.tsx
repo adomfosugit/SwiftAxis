@@ -20,7 +20,7 @@ export function ProfileCard({ member }: ProfileCardProps) {
           src={member.imageUrl}
           alt={member.name}
           fill
-          className="object-cover"
+          className="object-fit"
           sizes="(max-width: 768px) 100vw, 320px"
         />
       </div>
@@ -58,7 +58,7 @@ interface ProfileGridProps {
 
 export function ProfileGrid({ members }: ProfileGridProps) {
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto ">
       {members.map((member) => (
         <ProfileCard key={member.name} member={member} />
       ))}
