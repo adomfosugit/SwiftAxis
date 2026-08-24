@@ -176,3 +176,59 @@ export async function createComment({
     return { success: false, message: 'Failed to save comment.' }
   }
 }
+
+
+
+export async function ReplyCommentUser({
+  jobId,
+  comment,
+  imageUrls,
+}: CreateCommentInput): Promise<CreateCommentResult> {
+  const user = await currentUser()
+
+  if (!user) {
+    return { success: false, message: 'Not authenticated.' }
+  }
+
+  const isAdmin = await isAdminUser()
+  if (!isAdmin) {
+    return { success: false, message: 'Not authorized.' }
+  }
+
+  const trimmedComment = comment.trim()
+
+  if (!trimmedComment) {
+    return { success: false, message: 'Comment cannot be empty.' }
+  }
+
+  const job = await prisma.job.findUnique({
+    where: { id: jobId },
+    select: { id: true },
+  })
+
+  if (!job) {
+    return { success: false, message: 'Job not found.' }
+  }
+
+  try {
+    const created = await prisma.comment.create({
+      data: {
+        jobId,
+        adminUserId: user.id,
+        adminEmail: user?.primaryEmailAddress?.emailAddress ?? '',
+        comment: trimmedComment,
+        images: {
+          create: imageUrls.map((imageUrl) => ({ imageUrl })),
+        },
+      },
+      select: { id: true },
+    })
+
+    revalidatePath(`/admin`)
+
+    return { success: true, commentId: created.id }
+  } catch (err) {
+    console.error('createComment failed', err)
+    return { success: false, message: 'Failed to save comment.' }
+  }
+}

@@ -14,7 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Field } from "../ui/field";
 import Link from "next/link";
 import ReuploadModal from "./Reupload";
-import CommentModal from "../Admin/CommentModal";
+import CommentModal from "../Dashboard/CommentModal";
 
 type JobWithComments = Job & {
   comments: (Comment & { images: CommentImage[] })[];
