@@ -190,10 +190,7 @@ export async function ReplyCommentUser({
     return { success: false, message: 'Not authenticated.' }
   }
 
-  const isAdmin = await isAdminUser()
-  if (!isAdmin) {
-    return { success: false, message: 'Not authorized.' }
-  }
+
 
   const trimmedComment = comment.trim()
 
