@@ -66,7 +66,12 @@ export function Footer() {
               </a>
               <div className="flex items-start gap-2">
                 <MapPin size={14} strokeWidth={1.8} className="mt-0.5 shrink-0 text-green-deep" />
+                <div className="flex flex-col">
+
                 <span>Abuja, Nigeria</span>
+                <span>PlOT 52A,JAMNAB DANTATA ESTATE</span>
+                <span>MILITARY PENSION BOARD F01 KUBWA, ABUJA,FCT, NIGERIA</span>
+                </div>
               </div>
             </div>
           </div>
