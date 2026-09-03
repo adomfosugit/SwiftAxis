@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -60,9 +60,13 @@ export function Footer() {
                 <Mail size={14} strokeWidth={1.8} className="shrink-0 text-green-deep" />
                 info@swiftaxisintegratedservices.com
               </a>
-              <a href="tel:+2341234567890" className="flex items-center gap-2 hover:text-green-deep">
+              <a href=" +234 803 169 4964" className="flex items-center gap-2 hover:text-green-deep">
                 <Phone size={14} strokeWidth={1.8} className="shrink-0 text-green-deep" />
-                07035736708
+                +234 803 169 4964
+              </a>
+               <a href=" +234 803 169 4964" className="flex items-center gap-2 hover:text-green-deep">
+                <MessageCircle size={14} strokeWidth={1.8} className="shrink-0 text-green-deep" />
+                +234 803 169 4964
               </a>
               <div className="flex items-start gap-2">
                 <MapPin size={14} strokeWidth={1.8} className="mt-0.5 shrink-0 text-green-deep" />
